@@ -5,6 +5,7 @@ services:
   elasticsearch:
     build:
       context: elasticsearch/
+    container_name: elk_es
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
     environment:
@@ -15,6 +16,7 @@ services:
   logstash:
     build:
       context: logstash/
+    container_name: elk_logstash_tcp
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
@@ -30,6 +32,7 @@ services:
   kibana:
     build:
       context: kibana/
+    container_name: elk_kibana
     volumes:
       - ./kibana/config/:/usr/share/kibana/config:ro
     networks:
@@ -41,6 +44,7 @@ services:
     image: nginx
     container_name: dockerelk_nginx
     restart: always
+    container_name: elk_nginx
     volumes:
       - /var/lib/docker/lnmp/nginx/:/etc/nginx/conf.d/ 
       - /var/lib/docker/lnmp/nginx/htpasswd:/htpasswd
@@ -53,6 +57,7 @@ services:
   logstash-agent:
     build:
       context: logstash-agent/
+    container_name: elk_logstash_agent
     networks:
       - elk
     environment:
