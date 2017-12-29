@@ -1,0 +1,1 @@
+SSHLOGIN %{SYSLOGTIMESTAMP:timestamp} %{DATA:hostname} %{GREEDYDATA:pid}%{DATA} %{DATA:status} password for %{DATA:user} from %{DATA:client_ip} port 
