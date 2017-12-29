@@ -46,8 +46,8 @@ services:
     restart: always
     container_name: elk_nginx
     volumes:
-      - /var/lib/docker/lnmp/nginx/:/etc/nginx/conf.d/ 
-      - /var/lib/docker/lnmp/nginx/htpasswd:/htpasswd
+      - ./nginx/kibana.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/htpasswd:/etc/nginx/conf.d/htpasswd
     networks:
       - elk
     depends_on:
