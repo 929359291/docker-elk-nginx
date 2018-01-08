@@ -42,7 +42,6 @@ services:
 
   nginx:
     image: nginx
-    container_name: dockerelk_nginx
     restart: always
     container_name: elk_nginx
     volumes:
